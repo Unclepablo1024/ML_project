@@ -1,0 +1,122 @@
+# Spam Email Detection
+
+A machine learning project for classifying emails as spam or ham (legitimate) using multiple classification algorithms.
+
+## Project Overview
+
+This project implements and compares three different machine learning models to detect spam emails:
+- Logistic Regression
+- Multinomial Naive Bayes
+- Linear Support Vector Machine (SVM)
+
+## Dataset
+
+The project uses three datasets:
+- **Train Data 1**: 2,228 samples (1,927 Ham, 301 Spam)
+- **Train Data 2**: 2,068 samples (1,440 Ham, 628 Spam)
+- **Test Data**: 6,447 samples
+
+## Requirements
+
+```
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+```
+
+Install dependencies using:
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn
+```
+
+## Project Structure
+
+### Data Preprocessing
+- Cleaning text data (removing special characters, line breaks)
+- Handling missing values and duplicates
+- Combining multiple training datasets
+- Text vectorization using TF-IDF (max 5,000 features, unigrams and bigrams)
+
+### Model Training & Evaluation
+
+#### 1. Logistic Regression
+- Hyperparameter tuning for regularization strength (C)
+- Best parameter: C=2.0
+- Accuracy: 96.10%
+- F1 Score: 91.11%
+
+#### 2. Multinomial Naive Bayes
+- Hyperparameter tuning for smoothing parameter (alpha)
+- Best parameter: alpha=0.5
+- Accuracy: 95.99%
+- F1 Score: 90.29%
+
+#### 3. Linear SVM
+- Hyperparameter tuning for regularization strength (C)
+- Best parameter: C=0.5
+- Accuracy: 96.34%
+- F1 Score: 91.64%
+
+## Results Comparison
+
+| Model | Accuracy | Precision (Spam) | Recall (Spam) | F1 (Spam) |
+|-------|----------|------------------|---------------|-----------|
+| Logistic Regression (C=2.0) | 96.10% | 89.89% | 92.35% | 91.11% |
+| Naive Bayes (alpha=0.5) | 95.99% | 94.61% | 86.34% | 90.29% |
+| **Linear SVM (C=0.5)** | **96.34%** | **90.43%** | **92.90%** | **91.64%** |
+
+**Winner**: Linear SVM provides the best overall performance with the highest accuracy and F1 score.
+
+## Usage
+
+1. **Load and preprocess data:**
+```python
+data_train1 = pd.read_csv('spam_train1.csv', engine='python')
+data_train2 = pd.read_csv('spam_train2.csv')
+# Preprocessing steps included in script
+```
+
+2. **Train the model:**
+```python
+from sklearn.svm import LinearSVC
+svm_best = LinearSVC(C=0.5, class_weight='balanced', random_state=42)
+svm_best.fit(X_train_tfidf, y_train)
+```
+
+3. **Make predictions:**
+```python
+test_predictions = svm_best.predict(X_test_tfidf)
+```
+
+## Key Features
+
+- **Class imbalance handling**: Uses balanced class weights
+- **Cross-validation**: 80/20 train-validation split with stratification
+- **Hyperparameter tuning**: Systematic evaluation of model parameters
+- **Comprehensive evaluation**: Accuracy, precision, recall, F1-score, and confusion matrices
+- **Text preprocessing**: TF-IDF vectorization with stop words removal
+
+## Project Objectives Achieved
+
+✅ Data preprocessing and cleaning  
+✅ Multiple machine learning model implementation  
+✅ Comprehensive model evaluation with multiple metrics  
+✅ Hyperparameter tuning and optimization  
+✅ Cross-validation and generalization testing  
+
+## Files
+
+- `spam_email_detection.py` - Main implementation script
+- `spam_train1.csv` - Training dataset 1 (required)
+- `spam_train2.csv` - Training dataset 2 (required)
+- `spam_test.csv` - Test dataset (required)
+
+## Author Notes
+
+This project demonstrates effective spam detection using classical machine learning approaches. The Linear SVM model achieved the best balance of precision and recall, making it the recommended choice for deployment.
+
+## License
+
+This project is provided for educational and research purposes.
