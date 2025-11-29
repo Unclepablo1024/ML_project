@@ -26,11 +26,6 @@ seaborn
 scikit-learn
 ```
 
-Install dependencies using:
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
-```
-
 ## Project Structure
 
 ### Data Preprocessing
@@ -69,23 +64,38 @@ pip install pandas numpy matplotlib seaborn scikit-learn
 
 **Winner**: Linear SVM provides the best overall performance with the highest accuracy and F1 score.
 
-## Usage
+## Usage (Google Colab)
 
-1. **Load and preprocess data:**
+This project was developed and tested in Google Colab. To run it:
+
+1. **Open the notebook in Google Colab:**
+   - Upload `Spam_email_detection.ipynb` to Google Colab
+   - Or open directly from GitHub/Google Drive
+
+2. **Upload your datasets:**
+   - Upload `spam_train1.csv`, `spam_train2.csv`, and `spam_test.csv` to Colab's `/content/` directory
+   - Or mount Google Drive and access files from there
+
+3. **Run all cells:**
+   - The notebook includes complete preprocessing, training, and evaluation
+   - Results will be displayed with confusion matrices and comparison tables
+
+4. **Key code snippets:**
+
+Load and preprocess data:
 ```python
-data_train1 = pd.read_csv('spam_train1.csv', engine='python')
-data_train2 = pd.read_csv('spam_train2.csv')
-# Preprocessing steps included in script
+data_train1 = pd.read_csv('/content/spam_train1.csv', engine='python')
+data_train2 = pd.read_csv('/content/spam_train2.csv')
 ```
 
-2. **Train the model:**
+Train the best model (Linear SVM):
 ```python
 from sklearn.svm import LinearSVC
 svm_best = LinearSVC(C=0.5, class_weight='balanced', random_state=42)
 svm_best.fit(X_train_tfidf, y_train)
 ```
 
-3. **Make predictions:**
+Make predictions:
 ```python
 test_predictions = svm_best.predict(X_test_tfidf)
 ```
@@ -108,10 +118,17 @@ test_predictions = svm_best.predict(X_test_tfidf)
 
 ## Files
 
-- `spam_email_detection.py` - Main implementation script
-- `spam_train1.csv` - Training dataset 1 (required)
-- `spam_train2.csv` - Training dataset 2 (required)
-- `spam_test.csv` - Test dataset (required)
+- `Spam_email_detection.ipynb` - Main Jupyter notebook (optimized for Google Colab)
+- `spam_train1.csv` - Training dataset 1 (required - upload to `/content/`)
+- `spam_train2.csv` - Training dataset 2 (required - upload to `/content/`)
+- `spam_test.csv` - Test dataset (required - upload to `/content/`)
+
+### Running in Google Colab
+
+The notebook is designed to run in Google Colab with minimal setup:
+- All dependencies are pre-installed in Colab (pandas, numpy, matplotlib, seaborn, scikit-learn)
+- Simply upload the CSV files to the `/content/` directory or mount your Google Drive
+- Run cells sequentially from top to bottom
 
 ## Author Notes
 
