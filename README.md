@@ -41,20 +41,8 @@ data/
 │── Label3.txt
 │── Label4.txt
 
-models/
-│── final_rf_model.pkl
 
-results/
-│── accuracy_comparison.png
-│── predictions.txt
-
-README.md
-requirements.txt
-```
-
----
-
-# 🧹 Preprocessing Pipeline (from actual notebooks)
+# 🧹 Preprocessing Pipeline
 
 All notebooks use a consistent manual preprocessing sequence:
 
@@ -70,7 +58,7 @@ Your pipeline combines:
 - `SimpleImputer(strategy="median")`
 - `StandardScaler()`
 
-### **3️⃣ Custom Feature Selector (from your code)**
+### **3️⃣ Custom Feature Selector**
 
 All notebooks include this class:
 
@@ -188,7 +176,7 @@ Run all cells top-to-bottom.
 
 ---
 
-# 🔮 Making Predictions (matches notebook code)
+# 🔮 Making Predictions 
 
 Every notebook ends with something like:
 
@@ -206,33 +194,9 @@ preds = pipe_rf.predict(df_test)
 
 ---
 
-# 💾 Saving Predictions
-```python
-np.savetxt("results/predictions.txt", preds, fmt="%s")
-```
-
 ---
 
-# 📈 Recreating Accuracy Plots
-
-Your bar graph visualization code matches this pattern:
-
-```python
-plt.bar(models, accuracies)
-for i, v in enumerate(accuracies):
-    plt.text(i, v + 0.005, str(v), ha='center')
-plt.show()
-```
-
-Saved figure is located in:
-
-```
-results/accuracy_comparison.png
-```
-
----
-
-# 📝 Summary of Findings (combined from code behavior)
+# 📝 Summary of Findings
 
 | Dataset | Feature Count | Samples | Best Model | Notes |
 |--------|---------------|---------|------------|-------|
@@ -242,8 +206,3 @@ results/accuracy_comparison.png
 | **4** | 11 | 1119 | Random Forest | Best tuned via GridSearchCV |
 
 ---
-
-# 👤 Author  
-**Cyron T.**  
-Data Science Major — Georgia State University  
-Machine Learning & Healthcare Informatics  
