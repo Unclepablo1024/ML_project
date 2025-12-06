@@ -53,7 +53,7 @@ df_test.replace(1.000000e+99, np.nan, inplace=True)
 ```
 
 ### **2️⃣ Median imputation + standard scaling**
-Your pipeline combines:
+Pipeline combines:
 
 - `SimpleImputer(strategy="median")`
 - `StandardScaler()`
@@ -84,8 +84,8 @@ This is applied before training.
 
 ---
 
-# 🤖 Models Used (based on notebook imports)
-Across all projects you consistently trained:
+# 🤖 Models Used 
+Across all projects consistently trained:
 
 - **Logistic Regression**
 - **SVM (SVC)**
@@ -102,7 +102,7 @@ from sklearn.metrics import accuracy_score, classification_report
 
 ---
 
-# 📊 Dataset Characteristics (extracted from notebook code)
+# 📊 Dataset Characteristics
 
 ### **Project 1**
 - Shape: `df.shape` / `df_test.shape`
